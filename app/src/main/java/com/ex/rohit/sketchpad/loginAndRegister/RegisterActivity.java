@@ -98,6 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onSuccess(Success success) {
                 if(success.getCode()==0){
                     animateRevealClose();
+
                     Log.d("register","success");
                 }else {
                     Log.d("register","fail");

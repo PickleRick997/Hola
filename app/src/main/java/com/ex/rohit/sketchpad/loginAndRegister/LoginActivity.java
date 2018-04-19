@@ -40,8 +40,6 @@ public class LoginActivity extends AppCompatActivity {
     FloatingActionButton fab;
     @BindView(R.id.remember_pass)
     CheckBox remember;
-    @BindView(R.id.login_auto)
-    CheckBox login_auto;
 
 
     private SharedPreferences sp;
@@ -63,11 +61,15 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-    private void TryToLogin(String stUserName, String stPassWord) {
+    private void TryToLogin(final String stUserName,final String stPassWord) {
         HttpClient.login(stUserName, stPassWord, new HttpCallback<Success>() {
             @Override
             public void onSuccess(Success success) {
                 if(success.getCode()==0){
+                    if(sp.getBoolean("REM", false)) {
+                        sp.edit().putString("user_name", stUserName).commit();
+                        sp.edit().putString("password", stPassWord).commit();
+                    }
                     Intent i2 = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i2);
                     finish();
@@ -86,22 +88,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initButton() {
-        //自动登陆
-        if (sp.getBoolean("AUTO", false)) {
-            remember.setChecked(true);
-            login_auto.setChecked(true);
-            TryToLogin(sp.getString("user_name", ""), sp.getString("password", ""));
-        }
         //是否记住密码
         if (sp.getBoolean("REM", false)) {
             username.setText(sp.getString("user_name", ""));
-            String a = sp.getString("user_name", "");
-            userpassword.setText(sp.getString("user_password", ""));
+            userpassword.setText(sp.getString("password", ""));
             remember.setChecked(true);
         } else {
             username.setText(sp.getString("user_name", ""));
             userpassword.setText("");
-            login_auto.setChecked(false);
             remember.setChecked(false);
         }
 
@@ -115,20 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     sp.edit().putBoolean("REM", false).commit();
                     sp.edit().putBoolean("AUTO", false).commit();
-                    login_auto.setChecked(false);
-                }
-            }
-        });
-        login_auto.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    sp.edit().putBoolean("AUTO", true).commit();
-                    sp.edit().putBoolean("REM", true).commit();
-                } else {
-                    sp.edit().putBoolean("AUTO", false).commit();
-                    sp.edit().putBoolean("REM", false).commit();
-                    remember.setChecked(false);
+
                 }
             }
         });
