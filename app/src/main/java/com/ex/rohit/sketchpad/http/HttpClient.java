@@ -39,13 +39,14 @@ public class HttpClient {
                 });
     }
 
-    public static void sendPath(String user_id, CustomPath path, String color, final HttpCallback<String> callback) throws IOException {
+    public static void sendPath(String user_id, CustomPath path, String color,float brushSize, final HttpCallback<String> callback) throws IOException {
         //String str = gson.toJson(path.getActions());
         String pathstr = ParcelableUtil.writeToStr(path);
         com.alibaba.fastjson.JSONObject json = new com.alibaba.fastjson.JSONObject();
         json.put("stroke",pathstr);
         json.put("user_id","1");
         json.put("color",color);
+        json.put("brushSize",brushSize);
         OkHttpUtils
                 .postString()
                 .url(DrawApplication.ip+"hola/addStroke.php")

@@ -22,12 +22,15 @@ public class PathJson {
     private String custompath;
     @SerializedName("color")
     private String color;
+    @SerializedName("brushSize")
+    private float brushSize;
 
-    public PathJson(String id, String user_id, String custompath, String color) {
+    public PathJson(String id, String user_id, String custompath, String color, float brushSize) {
         this.id = id;
         this.user_id = user_id;
         this.custompath = custompath;
         this.color = color;
+        this.brushSize = brushSize;
     }
 
     public String getId() {
@@ -67,5 +70,13 @@ public class PathJson {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public float getBrushSize() {
+        return brushSize;
+    }
+
+    public void setBrushSize(float brushSize) {
+        this.brushSize = brushSize;
     }
 }

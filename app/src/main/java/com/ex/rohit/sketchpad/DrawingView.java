@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 public class DrawingView extends View {
 
     public String color;
+
     private CustomPath drawPath;
     private Paint drawPaint,canvasPaint;
     private int paintColor=0xFF6600;
@@ -85,10 +86,13 @@ public class DrawingView extends View {
                                     Paint paint = new Paint();
                                     String remotecolor = path.getColor();
                                     int newcolor = Color.parseColor(remotecolor);
+                                    float newSize = path.getBrushSize();
                                     drawPaint.setColor(newcolor);
+                                    drawPaint.setStrokeWidth(newSize);
                                     drawCanvas.drawPath(customPath, drawPaint);
                                     invalidate();
                                     drawPaint.setColor(Color.parseColor(color));
+                                    drawPaint.setStrokeWidth(brushSize);
 //                                    drawPaint.setColor(Color.parseColor(color));
 //                                    canvasPaint.setColor(Color.parseColor(color));
                                     sp.edit().putInt("last_id", Integer.parseInt(path.getId())).commit();
@@ -158,7 +162,7 @@ public class DrawingView extends View {
                 int last = sp.getInt("last_id",0);
                 sp.edit().putInt("last_id", last+1).commit();
                 try {
-                    HttpClient.sendPath("1",drawPath,this.color, new HttpCallback<String>() {
+                    HttpClient.sendPath("1",drawPath,this.color,this.brushSize, new HttpCallback<String>() {
                         @Override
                         public void onSuccess(String s) {
                             Log.d("sendSuccess",s);
