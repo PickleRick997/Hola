@@ -12,7 +12,7 @@
         android:layout_height="320dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Sketch Pad"
+        android:text="Hola"
         android:textAlignment="center"
         android:textSize="50dp"
         android:background="#001122"

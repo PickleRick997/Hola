@@ -2,7 +2,6 @@ package com.ex.rohit.sketchpad;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +16,13 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.zhy.http.okhttp.OkHttpUtils;
+
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+import com.ex.rohit.sketchpad.http.HttpInterceptor;
+import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -41,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         newBtn.setOnClickListener(this);
         saveBtn = (ImageButton)findViewById(R.id.sve);
         saveBtn.setOnClickListener(this);
-
+        initOkHttpUtils();
         //Brush Size
         smallBrush= getResources().getInteger(R.integer.small_size);
         medBrush=getResources().getInteger(R.integer.medium_size);
@@ -57,7 +62,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         eraseBtn= (ImageButton)findViewById(R.id.ersr);
         eraseBtn.setOnClickListener(this);
     }
-
+    private void initOkHttpUtils() {
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .addInterceptor(new HttpInterceptor())
+                .build();
+        OkHttpUtils.initClient(okHttpClient);
+    }
         public void paintClicked(View view)
         {
             //Checking if the clicked color is not the chosen one
@@ -74,6 +87,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint));
                 currPaint=(ImageButton)view;
             }
+//            //else
+//                ImageButton imgView= (ImageButton)view;
+//                String color= view.getTag().toString();
+//                drawView.setColor(color);
         }
 
     @Override
@@ -84,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         {
             AlertDialog.Builder newDialog= new AlertDialog.Builder(this);
             newDialog.setTitle("New Drawing");
-            newDialog.setMessage("Start new drawing??\n(You will lose the current  drawing!!!)");
+            newDialog.setMessage("Start new drawing??\n(You will lose the current drawing!!!)");
             newDialog.setPositiveButton("Yes",new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog,int which)
                 {

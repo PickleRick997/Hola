@@ -79,9 +79,8 @@
         android:id="@+id/drwng"
         android:layout_width="match_parent"
         android:layout_height="410dp"
-        android:layout_below="@+id/newfle"
-        android:layout_marginTop="10dp"
-        />
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true" />
     
     <GridLayout
         android:layout_width="match_parent"
@@ -94,7 +93,8 @@
         android:layout_marginTop="5dp">
 
 
-            <ImageButton android:layout_width="29dp"
+            <ImageButton
+                android:layout_width="29dp"
                 android:layout_height="29dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="20dp"

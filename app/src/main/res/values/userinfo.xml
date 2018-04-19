@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="last_id">0</integer>
+    <bool name="AUTO">false</bool>
+    <bool name="REM">false</bool>
+</resources>

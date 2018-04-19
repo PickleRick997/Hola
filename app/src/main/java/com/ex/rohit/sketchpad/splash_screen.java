@@ -1,11 +1,8 @@
 package com.ex.rohit.sketchpad;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
-
 /**
  * Created by rohit on 7/2/17.
  */
