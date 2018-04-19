@@ -2,6 +2,7 @@ package com.ex.rohit.sketchpad.http;
 
 import android.graphics.Paint;
 
+import com.ex.rohit.sketchpad.model.Success;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -66,41 +67,47 @@ public class HttpClient {
                 });
     }
 
-    public static void login(String username, String passwd,final HttpCallback<String> callback) {
+    public static void login(String username, String passwd,final HttpCallback<Success> callback) {
+        com.alibaba.fastjson.JSONObject json = new com.alibaba.fastjson.JSONObject();
+        json.put("user_name",username);
+        json.put("passwd",passwd);
         OkHttpUtils
                 .postString()
-                .url(DrawApplication.ip + "enchant/releaseComment.action")
-                .content(new Gson().toJson(new Login(username, passwd)))
+                .url(DrawApplication.ip+"hola/login.php")
+                .content(json.toJSONString())
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build()
-                .execute(new StringCallback() {
+                .execute(new JsonCallback<Success>(Success.class) {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         callback.onFail(e);
                     }
 
                     @Override
-                    public void onResponse(String response, int id) {
+                    public void onResponse(Success response, int id) {
                         callback.onSuccess(response);
                     }
                 });
     }
 
-    public static void register(String username, String passwd,final HttpCallback<String> callback) {
+    public static void register(String username, String passwd,final HttpCallback<Success> callback) {
+        com.alibaba.fastjson.JSONObject json = new com.alibaba.fastjson.JSONObject();
+        json.put("user_name",username);
+        json.put("passwd",passwd);
         OkHttpUtils
                 .postString()
-                .url(DrawApplication.ip + "enchant/releaseComment.action")
-                .content(new Gson().toJson(new Register(username, passwd)))
+                .url(DrawApplication.ip+"hola/register.php")
+                .content(json.toJSONString())
                 .mediaType(MediaType.parse("application/json; charset=utf-8"))
                 .build()
-                .execute(new StringCallback() {
+                .execute(new JsonCallback<Success>(Success.class) {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         callback.onFail(e);
                     }
 
                     @Override
-                    public void onResponse(String response, int id) {
+                    public void onResponse(Success response, int id) {
                         callback.onSuccess(response);
                     }
                 });

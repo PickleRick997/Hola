@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity android:name="MainActivity"></activity>
+        <activity android:name=".loginAndRegister.RegisterActivity"/>
+        <activity android:name=".loginAndRegister.LoginActivity"/>
         <activity android:name="splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
