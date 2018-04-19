@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawView= (DrawingView)findViewById(R.id.drwng);
         GridLayout paintLayout= (GridLayout)findViewById(R.id.paint_colors);
         currPaint=(ImageButton)paintLayout.getChildAt(0);
-        currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
+        currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed,null));
         newBtn= (ImageButton)findViewById(R.id.newfle);
         newBtn.setOnClickListener(this);
         saveBtn = (ImageButton)findViewById(R.id.sve);
@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ImageButton imgView= (ImageButton)view;
                 String color=view.getTag().toString();
                 drawView.setColor(color);
-                imgView.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed));
-                currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint));
+                imgView.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed,null));
+                currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint,null));
                 currPaint=(ImageButton)view;
             }
 //            //else
