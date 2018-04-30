@@ -1,18 +1,15 @@
-package com.ex.rohit.sketchpad.http;
+package com.ex.rohit.Hola.http;
 
-import android.graphics.Paint;
-
-import com.ex.rohit.sketchpad.model.Success;
+import com.ex.rohit.Hola.model.Success;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.IOException;
 
-import com.ex.rohit.sketchpad.model.CustomPath;
-import com.ex.rohit.sketchpad.model.Login;
-import com.ex.rohit.sketchpad.model.PathGroup;
-import com.ex.rohit.sketchpad.model.Register;
+import com.ex.rohit.Hola.model.CustomPath;
+import com.ex.rohit.Hola.model.PathGroup;
+
 import okhttp3.Call;
 import okhttp3.MediaType;
 
@@ -47,7 +44,7 @@ public class HttpClient {
         json.put("stroke",pathstr);
         json.put("user_id","1");
         json.put("color",color);
-        json.put("brushSize",brushSize);
+        json.put("brush_size",brushSize);
         OkHttpUtils
                 .postString()
                 .url(DrawApplication.ip+"hola/addStroke.php")

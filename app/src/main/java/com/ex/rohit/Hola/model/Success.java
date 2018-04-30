@@ -1,4 +1,4 @@
-package com.ex.rohit.sketchpad.model;
+package com.ex.rohit.Hola.model;
 
 import com.google.gson.annotations.SerializedName;
 

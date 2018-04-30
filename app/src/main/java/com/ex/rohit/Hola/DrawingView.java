@@ -1,12 +1,9 @@
-package com.ex.rohit.sketchpad;
+package com.ex.rohit.Hola;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.content.Context;
@@ -21,14 +18,12 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.ex.rohit.sketchpad.http.HttpCallback;
-import com.ex.rohit.sketchpad.http.HttpClient;
+import com.ex.rohit.Hola.http.HttpCallback;
+import com.ex.rohit.Hola.http.HttpClient;
 
-import com.ex.rohit.sketchpad.http.ParcelableUtil;
-import com.ex.rohit.sketchpad.model.CustomPath;
-import com.ex.rohit.sketchpad.model.PathGroup;
-import com.ex.rohit.sketchpad.model.PathJson;
-import com.google.gson.Gson;
+import com.ex.rohit.Hola.model.CustomPath;
+import com.ex.rohit.Hola.model.PathGroup;
+import com.ex.rohit.Hola.model.PathJson;
 
 public class DrawingView extends View {
 
@@ -93,8 +88,6 @@ public class DrawingView extends View {
                                     invalidate();
                                     drawPaint.setColor(Color.parseColor(color));
                                     drawPaint.setStrokeWidth(brushSize);
-//                                    drawPaint.setColor(Color.parseColor(color));
-//                                    canvasPaint.setColor(Color.parseColor(color));
                                     sp.edit().putInt("last_id", Integer.parseInt(path.getId())).commit();
                                 }
 

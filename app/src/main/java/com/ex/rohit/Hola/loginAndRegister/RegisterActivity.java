@@ -1,4 +1,4 @@
-package com.ex.rohit.sketchpad.loginAndRegister;
+package com.ex.rohit.Hola.loginAndRegister;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -15,12 +15,11 @@ import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.ex.rohit.sketchpad.R;
-import com.ex.rohit.sketchpad.http.HttpCallback;
-import com.ex.rohit.sketchpad.http.HttpClient;
-import com.ex.rohit.sketchpad.model.Success;
+import com.ex.rohit.Hola.R;
+import com.ex.rohit.Hola.http.HttpCallback;
+import com.ex.rohit.Hola.http.HttpClient;
+import com.ex.rohit.Hola.model.Success;
 
 import java.util.HashMap;
 import java.util.Map;

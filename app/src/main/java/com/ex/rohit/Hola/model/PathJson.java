@@ -1,13 +1,10 @@
-package com.ex.rohit.sketchpad.model;
+package com.ex.rohit.Hola.model;
 
-import android.graphics.Paint;
-
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
 
-import com.ex.rohit.sketchpad.http.ParcelableUtil;
+import com.ex.rohit.Hola.http.ParcelableUtil;
 
 /**
  * Created by Flash on 2018/4/17.

@@ -1,21 +1,21 @@
-package com.ex.rohit.sketchpad.http;
+package com.ex.rohit.Hola.http;
 
 import com.google.gson.Gson;
+import com.zhy.http.okhttp.callback.Callback;
 
 import java.io.IOException;
 
-import okhttp3.Call;
 import okhttp3.Response;
-import com.zhy.http.okhttp.callback.Callback;
-/**
- * Created by Flash on 2018/4/17.
- */
 
-public class PathCallback<T> extends Callback<T> {
+
+/**
+ * Json封装
+ */
+public abstract class JsonCallback<T> extends Callback<T> {
     private Class<T> mClass;
     private Gson mGson;
 
-    public PathCallback(Class<T> clazz) {
+    public JsonCallback(Class<T> clazz) {
         this.mClass = clazz;
         mGson = new Gson();
     }
@@ -29,15 +29,5 @@ public class PathCallback<T> extends Callback<T> {
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public void onError(Call call, Exception e, int id) {
-
-    }
-
-    @Override
-    public void onResponse(T response, int id) {
-
     }
 }

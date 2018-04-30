@@ -1,7 +1,4 @@
-package com.ex.rohit.sketchpad.http;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.ex.rohit.Hola.http;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

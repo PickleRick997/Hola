@@ -1,4 +1,4 @@
-package com.ex.rohit.sketchpad.model;
+package com.ex.rohit.Hola.model;
 
 import android.graphics.Path;
 
@@ -18,13 +18,13 @@ public class CustomPath extends Path implements Serializable {
     private ArrayList<PathAction> actions = new ArrayList<CustomPath.PathAction>();
 
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException{
-        in.defaultReadObject();
-        drawThisPath();
+            in.defaultReadObject();
+            drawThisPath();
     }
 
     @Override
     public void moveTo(float x, float y) {
-        actions.add(new ActionMove(x, y));
+        actions.add(new ActionMove(x, y));  //向actions队列中加一个移动画笔的动作
         super.moveTo(x, y);
     }
 

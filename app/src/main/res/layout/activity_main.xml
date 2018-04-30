@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ex.rohit.sketchpad.MainActivity"
+    tools:context="com.ex.rohit.Hola.MainActivity"
     android:background="#FFFFFF">
 
     <ImageButton
@@ -75,7 +75,7 @@
         android:layout_marginLeft="70dp"
         />
 
-    <com.ex.rohit.sketchpad.DrawingView
+    <com.ex.rohit.Hola.DrawingView
         android:id="@+id/drwng"
         android:layout_width="match_parent"
         android:layout_height="410dp"

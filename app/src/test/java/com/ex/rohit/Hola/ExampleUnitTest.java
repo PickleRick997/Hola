@@ -1,4 +1,4 @@
-package com.ex.rohit.sketchpad;
+package com.ex.rohit.Hola;
 
 import org.junit.Test;
 

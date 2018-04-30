@@ -1,10 +1,10 @@
-package com.ex.rohit.sketchpad;
+package com.ex.rohit.Hola;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.ex.rohit.sketchpad.loginAndRegister.LoginActivity;
+import com.ex.rohit.Hola.loginAndRegister.LoginActivity;
 
 /**
  * Created by rohit on 7/2/17.

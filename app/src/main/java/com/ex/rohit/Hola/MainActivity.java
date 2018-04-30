@@ -1,4 +1,4 @@
-package com.ex.rohit.sketchpad;
+package com.ex.rohit.Hola;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,7 +21,7 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import com.ex.rohit.sketchpad.http.HttpInterceptor;
+import com.ex.rohit.Hola.http.HttpInterceptor;
 import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -38,29 +38,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //初始化布局
         drawView= (DrawingView)findViewById(R.id.drwng);
         GridLayout paintLayout= (GridLayout)findViewById(R.id.paint_colors);
         currPaint=(ImageButton)paintLayout.getChildAt(0);
         currPaint.setImageDrawable(getResources().getDrawable(R.drawable.paint_pressed,null));
+
         newBtn= (ImageButton)findViewById(R.id.newfle);
         newBtn.setOnClickListener(this);
         saveBtn = (ImageButton)findViewById(R.id.sve);
         saveBtn.setOnClickListener(this);
+        drawBtn=(ImageButton)findViewById(R.id.brshsze);
+        drawBtn.setOnClickListener(this);
+        eraseBtn= (ImageButton)findViewById(R.id.ersr);
+        eraseBtn.setOnClickListener(this);
+
         initOkHttpUtils();
+
         //Brush Size
         smallBrush= getResources().getInteger(R.integer.small_size);
         medBrush=getResources().getInteger(R.integer.medium_size);
-        largeBrush=getResources().getInteger(R.integer.large_size);
-
-        drawBtn=(ImageButton)findViewById(R.id.brshsze);
-        drawBtn.setOnClickListener(this);
 
         relativeLayout= (RelativeLayout)findViewById(R.id.relative);
         drawView.setBrushSize(smallBrush);
-
-        //Erase Button
-        eraseBtn= (ImageButton)findViewById(R.id.ersr);
-        eraseBtn.setOnClickListener(this);
     }
     private void initOkHttpUtils() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //save drawing
 
                     drawView.setDrawingCacheEnabled(true);
-                    String imgSaved= MediaStore.Images.Media.insertImage(getContentResolver(),drawView.getDrawingCache(),UUID.randomUUID().toString()+".png","drawing");
+                    String imgSaved= MediaStore.Images.Media.insertImage(getContentResolver(),drawView.getDrawingCache(),UUID.randomUUID().toString()+".png","Meeting");
                     if(imgSaved!=null)
                     {
                         Toast savedToast=Toast.makeText(getApplicationContext(),"Drawing saved to Gallery!!",Toast.LENGTH_SHORT);
